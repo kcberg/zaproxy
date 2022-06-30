@@ -34,8 +34,13 @@ java {
             languageVersion.set(JavaLanguageVersion.of(8))
         }
     } else {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        if (System.getProperty("os.arch") == "aarch64") {
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
+        } else {
+            sourceCompatibility = JavaVersion.VERSION_1_8
+            targetCompatibility = JavaVersion.VERSION_1_8
+        }
     }
 }
 
